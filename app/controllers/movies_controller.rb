@@ -17,6 +17,8 @@ class MoviesController < ApplicationController
     session[:ratings] = params[:ratings].keys if params[:ratings]
     session[:method] = params[:method] if params[:method]
 
+    redirect_to movies_path(ratings: Hash[session[:ratings].map {|r| [r,1]}], method: session[:method]) if  params[:ratings].nil? || params[:method].nil?
+
     @ratings = session[:ratings]
     @sort = session[:method]
 
