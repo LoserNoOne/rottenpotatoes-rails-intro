@@ -18,10 +18,9 @@ class MoviesController < ApplicationController
     session[:ratings] = params[:ratings].keys if params[:ratings]
     session[:method] = params[:method] if params[:method]
 
-    if params[:method].nil? && params[:ratings].nil? && (!session[:method].nil? || !session[:ratings].nil?)
-      flash.keep
-      redirect_to movies_path(:method => session[:method], :ratings => session[:ratings])
-    end
+    # if params[:method].nil? && params[:ratings].nil? && (!session[:method].nil? || !session[:ratings].nil?)
+    #   redirect_to movies_path(:method => session[:method], :ratings => session[:ratings])
+    # end
 
     @ratings = session[:ratings]
     @sort = session[:method]
