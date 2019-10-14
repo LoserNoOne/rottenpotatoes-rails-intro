@@ -12,9 +12,9 @@
 %table#movies.table.table-striped.col-md-12
   %thead
     %tr
-      %th{:style=> "background-color: yellow", :class => ("hilite .text-danger" if @sort == "title")}= link_to "Movie Title", movies_path(:method => "title"), :id => "title_header"
+      %th{:style=> ("background-color: yellow-orange" if @sort == "title"), :class => ("hilite .text-danger" if @sort == "title")}= link_to "Movie Title", movies_path(:method => "title"), :id => "title_header"
       %th Rating
-      %th{:style=> "background-color: orange", :class => ("hilite .text-danger" if @sort == "release_date")}= link_to "Release Date", movies_path(:method => "release_date"), :id => "release_date_header"
+      %th{:style=> ("background-color: yellow-orange" if @sort == "released_date"), :class => ("hilite .text-danger" if @sort == "release_date")}= link_to "Release Date", movies_path(:method => "release_date"), :id => "release_date_header"
       %th More Info
   %tbody
     - @movies.each do |movie|
