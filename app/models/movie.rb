@@ -4,7 +4,7 @@ class Movie < ActiveRecord::Base
 		return ['G','PG','PG-13','R']
 	end
 
-	def self.filter(constains)
-		Movie.where(:rating: constains);
-	end
+	# def self.filter(constains)
+	# 	Movie.where(:rating: constains);
+	# end
 end
