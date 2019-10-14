@@ -5,6 +5,6 @@ class Movie < ActiveRecord::Base
 	end
 
 	def self.filter(constains)
-		Movie.where(:rating: constains)
+		Movie.where(:rating: constains);
 	end
 end
