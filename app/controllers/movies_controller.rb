@@ -11,13 +11,17 @@ class MoviesController < ApplicationController
   end
 
   def index
+
     @all_ratings = Movie.ratings
     session[:ratings] ||= @all_ratings
 
     session[:ratings] = params[:ratings].keys if params[:ratings]
     session[:method] = params[:method] if params[:method]
 
-    redirect_to movies_path(ratings: Hash[session[:ratings].map {|r| [r,1]}], method: session[:method]) if  params[:ratings].nil? || params[:method].nil?
+    if params[:method].nil? && params[:ratings].nil? && (!session[:method].nil? || !session[:ratings].nil?)
+      flash.keep
+      redirect_to movies_path(:method => session[:method], :ratings => session[:ratings])
+    end
 
     @ratings = session[:ratings]
     @sort = session[:method]
